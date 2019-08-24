@@ -1,11 +1,11 @@
-﻿# K Nearest Neighbor
+﻿# K Nearest Neighbour
 
 Implementation of kNN in Python (3.6).
 
 
 ## Description
 
-k-nearest neighbors, or neighbours for use  canadians is a non-parametric method used in  classification. The input consists of the k closest training examples in the feature space. The output is a class membership. An object is classified by a plurality vote of its neighbors, with the object being assigned to the class most common among its k nearest neighbors (k is a positive integer, typically small). If k = 1, then the object is simply assigned to the class of that single nearest neighbor.
+k-nearest neighbors (kNN) is a non-parametric method used in  classification. The input consists of the k closest training examples in the feature space. The output is a class membership. An object is classified by a plurality vote of its neighbors, with the object being assigned to the class most common among its k nearest neighbors (k is a positive integer, typically small). If k = 1, then the object is simply assigned to the class of that single nearest neighbor.
 In kNN regression, the output is the property value for the object. This value is the average of the values of k nearest neighbors. kNN is a type of instance-based learning, or lazy learning, where the function is only approximated locally and all computation is deferred until classification.
 
 source: https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm
@@ -17,7 +17,7 @@ We will use the iris dataset to demo the kNN classifier
 
 The Iris flower data set or Fisher's Iris data set is a multivariate data set introduced by the British statistician and biologist Ronald Fisher in his 1936 paper The use of multiple measurements in taxonomic problems as an example of linear discriminant analysis. It is sometimes called Anderson's Iris data set because Edgar Anderson collected the data to quantify the morphologic variation of Iris flowers of three related species. Two of the three species were collected in the Gaspé Peninsula "all from the same pasture, and picked on the same day and measured at the same time by the same person with the same apparatus".
 
-![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/iris.PNG)
+![Image](https://github.com/amourav/kNearestNeighbor/readme_imgs/iris.png)
 
 Iris Flower Species ([source] (https://www.flickr.com/photos/gmayfield10/3352170798/in/photostream/))
 
@@ -30,17 +30,17 @@ source: https://en.wikipedia.org/wiki/Iris_flower_data_set
 ## Overview
 For illustration purposes we will only be using the two features.
 
-![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/scatter1.png)
+![Image](https://github.com/amourav/kNearestNeighbor/readme_imgs/scatter1.png)
 
 Scatterplot of samples in iris dataset.
 
 We can tune the value of `k` on the test set.
 
-![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/tune_k.png)
+![Image](https://github.com/amourav/kNearestNeighbor/readme_imgs/tune_k.png)
 
 Using the optimal value of `k` we can run inference on the dataset and clasify each point in the feature space.
 
-![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/scatter2.png)
+![Image](https://github.com/amourav/kNearestNeighbor/readme_imgs/scatter2.png)
 
 
 
@@ -54,11 +54,9 @@ To run the demo notebook you will need a few additional packages:
 
 ## Usage
 
-`knn = kNearestNeighbor(k=k)` Initialize knn classifier with the number of neighbours.
-
+`knn = kNearestNeighbor(k=k)` Initialize knn classifier
 `knn.fit(X_trn, y_trn)` Fit the classifier to the training data. (Note: all this does is evaluate the training accuracy and save the training set.
-
-`knn.predict(X_test)` This will run inference on new input data by measuring distance of points in X_trn to each point in X_test.
+`knn.predict(X_test)` This will run inference on new input data by measuring distance of points in X_trn.
 
 example:
 
@@ -98,3 +96,4 @@ print('test accuracy: {}'.format(test_acc))
 ## Author
 
 Andrei Mouraviev
+
