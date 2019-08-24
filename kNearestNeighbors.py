@@ -66,11 +66,12 @@ class kNearestNeighbor():
         self.norm = norm
         self.dist_func = self.set_dist_func(dist_metric)
 
-    def fit(self, X_train, y_train):
+    def fit(self, X_train, y_train, v=False):
         """
         Define training data for
         :param X_train: training input data (array) - X.shape = (n_samples, m_features)
         :param y_train: training labels (array) - X.shape = (n_samples)
+        :param v: verbose. print trn acc if True (bool)
         :return: None
         """
         # check data
@@ -96,8 +97,10 @@ class kNearestNeighbor():
             y_train_pred.append(y_train_pred_i)
             y_train_pred_proba.append(y_train_pred_proba_i)
 
-        trn_acc = accuracy(y_train, y_train_pred)
-        print('training accuracy: {}'.format(trn_acc))
+        if v:
+            trn_acc = accuracy(y_train, y_train_pred)
+            print('training accuracy: {}'.format(trn_acc))
+
         self.isFit = True
 
     def estimate_point(self, distances, y):
