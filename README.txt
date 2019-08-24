@@ -17,7 +17,7 @@ We will use the iris dataset to demo the kNN classifier
 
 The Iris flower data set or Fisher's Iris data set is a multivariate data set introduced by the British statistician and biologist Ronald Fisher in his 1936 paper The use of multiple measurements in taxonomic problems as an example of linear discriminant analysis. It is sometimes called Anderson's Iris data set because Edgar Anderson collected the data to quantify the morphologic variation of Iris flowers of three related species. Two of the three species were collected in the Gaspé Peninsula "all from the same pasture, and picked on the same day and measured at the same time by the same person with the same apparatus".
 
-![Image](https://github.com/amourav/kNearestNeighbour/readme_imgs/iris.png)
+![Image](https://github.com/amourav/kNearestNeighbor/readme_imgs/iris.png)
 
 Iris Flower Species ([source] (https://www.flickr.com/photos/gmayfield10/3352170798/in/photostream/))
 
@@ -30,18 +30,17 @@ source: https://en.wikipedia.org/wiki/Iris_flower_data_set
 ## Overview
 For illustration purposes we will only be using the two features.
 
-![Image](https://github.com/amourav/kNearestNeighbour/readme_imgs/scatter1.png)
+![Image](https://github.com/amourav/kNearestNeighbor/readme_imgs/scatter1.png)
 
 Scatterplot of samples in iris dataset.
 
-
 We can tune the value of `k` on the test set.
 
-![Image](https://github.com/amourav/kNearestNeighbour/readme_imgs/tune_k.png)
+![Image](https://github.com/amourav/kNearestNeighbor/readme_imgs/tune_k.png)
 
 Using the optimal value of `k` we can run inference on the dataset and clasify each point in the feature space.
 
-![Image](https://github.com/amourav/kNearestNeighbour/readme_imgs/scatter2.png)
+![Image](https://github.com/amourav/kNearestNeighbor/readme_imgs/scatter2.png)
 
 
 
