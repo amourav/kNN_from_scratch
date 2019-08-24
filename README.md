@@ -1,4 +1,4 @@
-﻿# K Nearest Neighbor
+# K Nearest Neighbor
 
 Implementation of kNN in Python (3.6).
 
@@ -70,13 +70,13 @@ import numpy as np
 
 # load dataset
 iris = datasets.load_iris()
-X = iris.data  
+X = iris.data
 y = iris.target
 
 # trn/test split - only use first two features
-X_trn, X_test, y_trn, y_test = train_test_split(X[:, :2], 
-                                                y, 
-                                                test_size=0.2, 
+X_trn, X_test, y_trn, y_test = train_test_split(X[:, :2],
+                                                y,
+                                                test_size=0.2,
                                                 random_state=0)
 
 # fit classifier
