@@ -12,14 +12,13 @@ source: https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm
 
 ## Dataset
 
-
-We will use the iris dataset to demo the kNN classifier
+We will use the iris dataset to demo the kNN classifier (Fig. 1)
 
 The Iris flower data set or Fisher's Iris data set is a multivariate data set introduced by the British statistician and biologist Ronald Fisher in his 1936 paper The use of multiple measurements in taxonomic problems as an example of linear discriminant analysis. It is sometimes called Anderson's Iris data set because Edgar Anderson collected the data to quantify the morphologic variation of Iris flowers of three related species. Two of the three species were collected in the Gaspé Peninsula "all from the same pasture, and picked on the same day and measured at the same time by the same person with the same apparatus".
 
 ![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/iris.PNG)
 
-Iris Flower Species ([source] (https://www.flickr.com/photos/gmayfield10/3352170798/in/photostream/))
+Figure 1: Iris Flower Species [source](https://www.flickr.com/photos/gmayfield10/3352170798/in/photostream/)
 
 
 This data sets consists of 3 different types of irises (Setosa, Versicolour, and Virginica) petal and sepal length, stored in a 150x4 numpy.ndarray. The rows being the samples and the columns being: Sepal Length, Sepal Width, Petal Length and Petal Width.
@@ -28,20 +27,24 @@ source: https://en.wikipedia.org/wiki/Iris_flower_data_set
 
 
 ## Overview
-For illustration purposes we will only be using the two features.
+
+For illustration purposes we will only be using the two features (sepal length, and sepal width). We will also split the dataset into training (120 samples) and testing (30 samples) A scatterplot illustrating the distribution of iris flower species based on these features (Fig. 2).
 
 ![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/scatter1.png)
 
-Scatterplot of samples in iris dataset.
+Figure 2: Scatterplot of samples in iris dataset.
 
-We can tune the value of `k` on the test set.
+Now that we split the dataset into training and testing, we can tune the value of `k` on the test set.
+
+Figure 3: Accuracy for each value of k evaluated on the training and testing data.
 
 ![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/tune_k.png)
 
-Using the optimal value of `k` we can run inference on the dataset and clasify each point in the feature space.
+Using the optimal value of `k` we can run inference on the dataset and clasify each point in the feature space (Fig. 4).
 
 ![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/scatter2.png)
 
+Figure 4: Scatterplot of iris dataset labeled by species (sepal length vs sepal width). Background colour represents best guess of the knn classifier for the class label of the hypothetical point in this feature space.
 
 
 ## Dependencies
@@ -70,13 +73,13 @@ import numpy as np
 
 # load dataset
 iris = datasets.load_iris()
-X = iris.data
+X = iris.data  
 y = iris.target
 
 # trn/test split - only use first two features
-X_trn, X_test, y_trn, y_test = train_test_split(X[:, :2],
-                                                y,
-                                                test_size=0.2,
+X_trn, X_test, y_trn, y_test = train_test_split(X[:, :2], 
+                                                y, 
+                                                test_size=0.2, 
                                                 random_state=0)
 
 # fit classifier
