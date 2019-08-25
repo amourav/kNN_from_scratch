@@ -36,9 +36,9 @@ Figure 2: Scatterplot of samples in iris dataset.
 
 Now that we split the dataset into training and testing, we can tune the value of `k` on the test set.
 
-Figure 3: Accuracy for each value of k evaluated on the training and testing data.
-
 ![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/tune_k.png)
+
+Figure 3: Accuracy for each value of k evaluated on the training and testing data.
 
 Using the optimal value of `k` we can run inference on the dataset and clasify each point in the feature space (Fig. 4).
 
