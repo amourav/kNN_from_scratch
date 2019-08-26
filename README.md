@@ -5,7 +5,7 @@ Implementation of kNN in Python (3.6).
 
 ## Description
 
-k-nearest neighbors(or neighbours for us Canadians) is a non-parametric method used in classification. The input consists of the k closest training examples in the feature space. The output is a class membership. An object is classified by a plurality vote of its neighbors, with the object being assigned to the class most common among its k nearest neighbors (k is a positive integer, typically small). If k = 1, then the object is simply assigned to the class of that single nearest neighbor.
+k-nearest neighbors (or "neighbours" for us Canadians) is a non-parametric method used in classification. The input consists of the k closest training examples in the feature space. The output is a class membership. An object is classified by a plurality vote of its neighbors, with the object being assigned to the class most common among its k nearest neighbors (k is a positive integer, typically small). If k = 1, then the object is simply assigned to the class of that single nearest neighbor.
 In kNN regression, the output is the property value for the object. This value is the average of the values of k nearest neighbors. kNN is a type of instance-based learning, or lazy learning, where the function is only approximated locally and all computation is deferred until classification.
 
 source: https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm
