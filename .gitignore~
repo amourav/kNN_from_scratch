@@ -1,8 +1,0 @@
-# don't track these files
-.ipynb_checkpoints
-.idea
-__pycache__
-
-# exceptions
-.*
-*~
