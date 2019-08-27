@@ -5,8 +5,8 @@ from collections import Counter
 def euc_dist(a, b):
     """
     calculate euclidean distance (l2 norm of a-b) between a and b
-    :param a: data point X[i, :] (list / array) len(a) = n
-    :param b: data point X[j, :] (list / array) len(b) = n
+    :param a: data point X[i, :] (numpy array) shape = n
+    :param b: data point X[j, :] (numpy array) shape = n
     :return: distance (float)
     """
     return np.linalg.norm(a - b, ord=2)
@@ -15,11 +15,11 @@ def euc_dist(a, b):
 def accuracy(y_true, y_pred):
     """
     measure accuracy of predictions (y_pred) given true labels (y_true)
-    :param y_true: true class labels (list / array) - e.g. [0, 1, 2, 1]
-    :param y_pred: predicted class labels (list / array) e.g. [0, 2, 1, 1]
+    :param y_true: true class labels (numpy array) - e.g. np.array([0, 1, 2, 1])
+    :param y_pred: predicted class labels (numpy array) e.g. np.array([0, 2, 1, 1])
     :return: accuracy (float)
     """
-    return sum(y_true == y_pred) / len(y_true)
+    return np.sum(y_true == y_pred) / len(y_true)
 
 
 def norm_data(X):
@@ -34,9 +34,9 @@ def norm_data(X):
 
 def argsort(a):
     """
-    sort list or array (ascending)
-    :param a: list to be sorted
-    :return: sorted list (array)
+    sort numpy array (ascending)
+    :param a: numpy array to be sorted
+    :return: sorted numpy array (array)
     """
     return np.array(a).argsort()
 
@@ -64,13 +64,13 @@ class kNearestNeighbor():
         self.k = k
         self.isFit = False  # model fitting done?
         self.norm = norm
-        self.dist_func = self.set_dist_func(dist_metric)
+        self._set_dist_func(dist_metric)
 
     def fit(self, X_train, y_train, v=False):
         """
         Define training data for
-        :param X_train: training input data (array) - X.shape = (n_samples, m_features)
-        :param y_train: training labels (array) - X.shape = (n_samples)
+        :param X_train: training input data (numpy array) - X.shape = (n_samples, m_features)
+        :param y_train: training labels (numpy array) - X.shape = (n_samples)
         :param v: verbose. print trn acc if True (bool)
         :return: None
         """
@@ -100,13 +100,12 @@ class kNearestNeighbor():
         if v:
             trn_acc = accuracy(y_train, y_train_pred)
             print('training accuracy: {}'.format(trn_acc))
-
         self.isFit = True
 
     def estimate_point(self, distances, y):
         """
         estimate most likely class given k neighbours
-        :param distances: distances to all other points (list)
+        :param distances: distances to all other points (numpy array)
         :param y: labels associated with each entry in distances
         :return: most likely class, probability of class
         """
@@ -120,18 +119,18 @@ class kNearestNeighbor():
     def norm_new(self, X_new):
         """
         normalize test data based on mean and variance of training data
-        :param X_new: input data of a new set of samples (array) -
+        :param X_new: input data of a new set of samples (numpy array) -
         X_new.shape = (n_samples, m_features)
-        :return: normalized data (array)
+        :return: normalized data (numpy array)
         """
         return (X_new - self.trn_mean) / self.trn_std
 
     def predict(self, X_new):
         """
         predict class labels based on training data
-        :param X_new: input data of a new set of samples (array) -
+        :param X_new: input data of a new set of samples (numpy array) -
         X_new.shape = (n_samples, m_features)
-        :return: y_new_pred: predicted class labels of X_new (list)
+        :return: y_new_pred: predicted class labels of X_new (numpy array)
         """
         if not (self.isFit):
             raise Exception('run knn.fit(x_trn, y_trn) before running knn.predict(x_new)')
@@ -149,19 +148,9 @@ class kNearestNeighbor():
             y_pred_i, y_pred_proba_i = pred_i
             y_new_pred.append(y_pred_i)
             y_new_pred_proba.append(y_pred_proba_i)
-
         return y_new_pred
 
-    def evaluate(self, y_true, y_pred):
-        """
-        evaluate
-        :param X_new:
-        :param y_new:
-        :return:
-        """
-        pass
-
-    def set_dist_func(self, dist_metric):
+    def _set_dist_func(self, dist_metric):
         """
         set distance metric
         :param dist_metric: method for measuring distance between points (str)
@@ -169,7 +158,8 @@ class kNearestNeighbor():
         :return:
         """
         implemented_metrics = {'euclidean': euc_dist, }
-        for metric in implemented_metrics.keys():
-            if dist_metric == metric:
-                return implemented_metrics[metric]
-        raise Exception('{} is not an acceptable argument for dist_metric')
+        try:
+            self.dist_func = implemented_metrics[dist_metric]
+        except KeyError:
+            raise Exception('{} is not an acceptable argument for dist_metric'.format(dist_metric))
+
