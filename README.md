@@ -56,7 +56,7 @@ Figure 5: Scatterplot of iris dataset with predicted (knn - k=12) and actual cla
 x - test set).
 
 Of course, we are not limited to using these two features, or any two features (Fig. 6). 
-![Image](https://github.com/amourav/kNN_from_scratch/blob/master/readme_imgs/knn_plots.png) <br/>
+![Image](https://github.com/amourav/kNN_from_scratch/blob/master/readme_imgs/knn_plots_full.png) <br/>
 Figure 6: Pairwise comparison of features in the iris dataset and predicted labels (knn - k=12).
 
 ## Dependencies
