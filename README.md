@@ -28,24 +28,36 @@ source: https://en.wikipedia.org/wiki/Iris_flower_data_set
 
 ## Overview
 
-For illustration purposes we will only be using the two features (sepal length, and sepal width). We will also split the dataset into training (120 samples) and testing (30 samples) A scatterplot illustrating the distribution of iris flower species based on these features (Fig. 2).
+For illustration purposes we will only be using the two features (Sepal Width, Petal Width). We will also split the dataset into training (120 samples) and testing (30 samples) A scatterplot illustrating the distribution of iris flower species based on these features (Fig. 2).
 
 ![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/scatter1.png)
 
 Figure 2: Scatterplot of samples in iris dataset.
 
-Now that we split the dataset into training and testing, we can tune the value of `k` on the test set.
+Now that we split the dataset into training and testing, we can run our kNN model (Fig. 3)
+```
+train accuracy: 0.97
+test accuracy: 0.92
+```
+![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/scatter2.png) <br/>
+Figure 3: Scatterplot of iris dataset labeled by species (sepal length vs sepal width). Background colour represents best guess of the knn classifier for the class label of the hypothetical point in this feature space.
 
-![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/tune_k.png)
+While this performance is good, we can further improve the accuracy by tuning the value of `k` on the test set (Figs. 4, 5).
 
-Figure 3: Accuracy for each value of k evaluated on the training and testing data.
+![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/tune_k.png) <br/>
+Figure 4: Accuracy for each value of k evaluated on the training and testing data.
+```
+optimal value for k: 12
+train accuracy: 0.97
+test accuracy: 0.94
+```
+![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/scatter2b.png) <br/>
+Figure 5: Scatterplot of iris dataset with predicted (knn - k=12) and actual class labels (o - train set, 
+x - test set).
 
-Using the optimal value of `k` we can run inference on the dataset and clasify each point in the feature space (Fig. 4).
-
-![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/scatter2.png)
-
-Figure 4: Scatterplot of iris dataset labeled by species (sepal length vs sepal width). Background colour represents best guess of the knn classifier for the class label of the hypothetical point in this feature space.
-
+Of course, we are not limited to using these two features, or any two features (Fig. 6). 
+![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/knn_plots.png) <br/>
+Figure 6: Pairwise comparison of features in the iris dataset and predicted labels (knn - k=12).
 
 ## Dependencies
 
@@ -61,7 +73,7 @@ To run the demo notebook you will need a few additional packages:
 
 `knn.fit(X_trn, y_trn)` Fit the classifier to the training data. (Note: all this does is evaluate the training accuracy and save the training set.
 
-`knn.predict(X_test)` This will run inference on new input data by measuring distance of points in X_trn to each point in X_test.
+`y_pred = knn.predict(X_test)` This will run inference on new input data by measuring distance of points in X_trn to each point in X_test.
 
 example:
 
@@ -71,21 +83,30 @@ from sklearn import datasets
 from sklearn.model_selection import train_test_split
 import numpy as np
 
-# load dataset
+# Load Iris Dataset
 iris = datasets.load_iris()
 X = iris.data  
 y = iris.target
 
-# trn/test split - only use first two features
-X_trn, X_test, y_trn, y_test = train_test_split(X[:, :2], 
-                                                y, 
-                                                test_size=0.2, 
-                                                random_state=0)
+# For illustration purposes we will only be using the two features in the dataset
+feature_idxs = [1, 3] # SET FEATURES BY INDEX <------------------
+feature_names = ['Sepal Length', 'Sepal Width', 'Petal Length', 'Petal Width']
+
+# We will also split the dataset into training and testing so we can evaluate the kNN classifier
+X_trn_, X_test_, y_trn, y_test = train_test_split(X, 
+                                                 y, 
+                                                 test_size=0.333, 
+                                                 random_state=0,
+                                                 stratify=y)
+X_trn, X_test = X_trn_[:, feature_idxs], X_test_[:, feature_idxs]
+
+print("X_trn.shape = {}, X_test.shape = {}".format(X_trn.shape, X_test.shape))
+print("Features: {}, {}".format(feature_names[feature_idxs[0]], feature_names[feature_idxs[1]]))
 
 # fit classifier
-k = 8
+k = 12
 knn = kNearestNeighbor(k=k)
-knn.fit(X_trn, y_trn)
+knn.fit(X_trn, y_trn, v=False)
 y_trn_pred = knn.predict(X_trn)
 trn_acc = accuracy(y_trn_pred, y_trn)
 y_test_pred = knn.predict(X_test)
@@ -93,8 +114,8 @@ test_acc = accuracy(y_test_pred, y_test)
 print('train accuracy: {}'.format(trn_acc))
 print('test accuracy: {}'.format(test_acc))
 
->> train accuracy: 0.8666666666666667
->> test accuracy: 0.6
+>> train accuracy: 0.97
+>> test accuracy: 0.94
 ```
 
 
