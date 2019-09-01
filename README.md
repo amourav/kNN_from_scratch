@@ -16,7 +16,7 @@ We will use the iris dataset to demo the kNN classifier (Fig. 1)
 
 The Iris flower data set or Fisher's Iris data set is a multivariate data set introduced by the British statistician and biologist Ronald Fisher in his 1936 paper The use of multiple measurements in taxonomic problems as an example of linear discriminant analysis. It is sometimes called Anderson's Iris data set because Edgar Anderson collected the data to quantify the morphologic variation of Iris flowers of three related species. Two of the three species were collected in the Gaspé Peninsula "all from the same pasture, and picked on the same day and measured at the same time by the same person with the same apparatus".
 
-![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/iris.PNG)
+![Image](https://github.com/amourav/kNN_from_scratch/blob/readme/readme_imgs/iris.PNG)
 
 Figure 1: Iris Flower Species [source](https://www.flickr.com/photos/gmayfield10/3352170798/in/photostream/)
 
@@ -30,7 +30,7 @@ source: https://en.wikipedia.org/wiki/Iris_flower_data_set
 
 For illustration purposes we will only be using the two features (Sepal Width, Petal Width). We will also split the dataset into training (120 samples) and testing (30 samples) A scatterplot illustrating the distribution of iris flower species based on these features (Fig. 2).
 
-![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/scatter1.png)
+![Image](https://github.com/amourav/kNN_from_scratch/blob/readme/readme_imgs/scatter1.png)
 
 Figure 2: Scatterplot of samples in iris dataset.
 
@@ -39,24 +39,24 @@ Now that we split the dataset into training and testing, we can run our kNN mode
 train accuracy: 0.97
 test accuracy: 0.92
 ```
-![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/scatter2.png) <br/>
+![Image](https://github.com/amourav/kNN_from_scratch/blob/readme/readme_imgs/scatter2.png) <br/>
 Figure 3: Scatterplot of iris dataset labeled by species (sepal length vs sepal width). Background colour represents best guess of the knn classifier for the class label of the hypothetical point in this feature space.
 
 While this performance is good, we can further improve the accuracy by tuning the value of `k` on the test set (Figs. 4, 5).
 
-![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/tune_k.png) <br/>
+![Image](https://github.com/amourav/kNN_from_scratch/blob/readme/readme_imgs/tune_k.png) <br/>
 Figure 4: Accuracy for each value of k evaluated on the training and testing data.
 ```
 optimal value for k: 12
 train accuracy: 0.97
 test accuracy: 0.94
 ```
-![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/scatter2b.png) <br/>
+![Image](https://github.com/amourav/kNN_from_scratch/blob/readme/readme_imgs/scatter2b.png) <br/>
 Figure 5: Scatterplot of iris dataset with predicted (knn - k=12) and actual class labels (o - train set, 
 x - test set).
 
 Of course, we are not limited to using these two features, or any two features (Fig. 6). 
-![Image](https://github.com/amourav/kNearestNeighbor/blob/readme/readme_imgs/knn_plots.png) <br/>
+![Image](https://github.com/amourav/kNN_from_scratch/blob/readme/readme_imgs/knn_plots.png) <br/>
 Figure 6: Pairwise comparison of features in the iris dataset and predicted labels (knn - k=12).
 
 ## Dependencies
