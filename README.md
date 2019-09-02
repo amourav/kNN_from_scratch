@@ -30,9 +30,8 @@ source: https://en.wikipedia.org/wiki/Iris_flower_data_set
 
 For illustration purposes we will only be using the two features (Sepal Width, Petal Width). We will also split the dataset into training (120 samples) and testing (30 samples) A scatterplot illustrating the distribution of iris flower species based on these features (Fig. 2).
 
-![Image](https://github.com/amourav/kNN_from_scratch/blob/master/readme_imgs/scatter1.png)
-
-Figure 2: Scatterplot of samples in iris dataset.
+![Image](https://github.com/amourav/kNN_from_scratch/blob/master/readme_imgs/scatter1.png) <br/>
+Figure 2: Scatterplot of samples in iris dataset. <br/> <br/> <br/>
 
 Now that we split the dataset into training and testing, we can run our kNN model (Fig. 3)
 ```
@@ -40,12 +39,12 @@ train accuracy: 0.97
 test accuracy: 0.92
 ```
 ![Image](https://github.com/amourav/kNN_from_scratch/blob/master/readme_imgs/scatter2.png) <br/>
-Figure 3: Scatterplot of iris dataset labeled by species (sepal length vs sepal width). Background colour represents best guess of the knn classifier for the class label of the hypothetical point in this feature space.
+Figure 3: Scatterplot of iris dataset labeled by species (sepal length vs sepal width). Background colour represents best guess of the knn classifier for the class label of the hypothetical point in this feature space. <br/> <br/> <br/>
 
 While this performance is good, we can further improve the accuracy by tuning the value of `k` on the test set (Figs. 4, 5).
 
 ![Image](https://github.com/amourav/kNN_from_scratch/blob/master/readme_imgs/tune_k.png) <br/>
-Figure 4: Accuracy for each value of k evaluated on the training and testing data.
+Figure 4: Accuracy for each value of k evaluated on the training and testing data. <br/>
 ```
 optimal value for k: 12
 train accuracy: 0.97
@@ -53,11 +52,11 @@ test accuracy: 0.94
 ```
 ![Image](https://github.com/amourav/kNN_from_scratch/blob/master/readme_imgs/scatter2b.png) <br/>
 Figure 5: Scatterplot of iris dataset with predicted (knn - k=12) and actual class labels (o - train set, 
-x - test set).
+x - test set). <br/> <br/> <br/>
 
-Of course, we are not limited to using these two features, or any two features (Fig. 6). 
+Of course, we are not limited to using these two features, or any two features (Fig. 6). <br/> <br/>
 ![Image](https://github.com/amourav/kNN_from_scratch/blob/master/readme_imgs/knn_plots_full.png) <br/>
-Figure 6: Pairwise comparison of features in the iris dataset and predicted labels (knn - k=12).
+Figure 6: Pairwise comparison of features in the iris dataset and predicted labels (knn - k=12). 
 
 ## Dependencies
 
